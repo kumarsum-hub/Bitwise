@@ -2,3 +2,6 @@ ipykernel
 python-dotenv
 pandas
 tensorflow
+matplotlib
+seaborn
+scikit-learn
