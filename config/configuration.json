@@ -1,0 +1,9 @@
+{
+  "activities": ["walking", "running", "stationary", "cycling", "Nordic walking", "Ascending stairs", "descending stairs", "ironing", "house cleaning", "playing soccer", "rope jumping"],
+  "sample_count_per_activity": 100,
+  "sample_duration_in_ms": 1000,
+  "acc_mg_range": {
+      "min": -4000,
+      "max": 4000
+  }
+}

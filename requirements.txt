@@ -5,3 +5,5 @@ tensorflow
 matplotlib
 seaborn
 scikit-learn
+numpy
+jsonschema

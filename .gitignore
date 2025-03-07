@@ -2,4 +2,12 @@
 .venv/
 
 # exclude data from source control by default
-# /data/
+/data/raw/
+
+# exclude __pycache__ directories
+/src/__pycache__/
+/src/modeling/__pycache__/
+/src/services/__pycache__/
+
+# exclude output from source control by default
+/output/

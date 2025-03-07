@@ -1,69 +1,70 @@
-## Adjusting .gitignore
+# Generative AI Accelerometer Data Generation Project
 
-Ensure you adjust the `.gitignore` file according to project needs. For example, since this is a template, the `/data/` folder is commented out and data will not be exluded from source control:
+## Overview
+This project aims to create a generative AI model and helper scripts for generating synthetic 3D MEMS accelerometer data for Human Activities Recognition. The data is generated based on various human activities and is intended to be used for training and evaluating machine learning models.
 
-```plaintext
-# exclude data from source control by default
-# /data/
+## Features
+- Generates synthetic accelerometer data for multiple activities.
+- Supports configurable parameters through a JSON input file.
+- Outputs data in CSV format, organized by activity.
+- Includes a machine learning model for classifying the generated data.
+
+## Activities Covered
+The following activities are included in the synthetic data generation:
+- Walking
+- Running
+- Stationary
+- Cycling
+- Nordic Walking
+- Ascending Stairs
+- Descending Stairs
+- Ironing
+- House Cleaning
+- Playing Soccer
+- Rope Jumping
+
+## Project Structure
+```
+generative-ai-accelerometer
+├── src
+│   ├── modeling
+│   │   └── train.py              # Implementation of the generative AI model
+│   ├── services
+│   │   └── generate_synthetic_data.py  # Logic for generating synthetic data
+│   └── main.py                   # Entry point for the application
+├── config
+│   └── configuration.json         # Configuration settings for the project
+├── output
+│   └── README.md                 # Documentation for the output directory
+├── requirements.txt              # Project dependencies
+└── README.md                     # Overall documentation for the project
 ```
 
-Typically, you want to exclude this folder if it contains either sensitive data that you do not want to add to version control or large files.
+## Setup Instructions
+1. Clone the repository:
+   ```bash
+   git clone <repository-url>
+   cd generative-ai-accelerometer
+   ```
 
-## Duplicating the .env File
-To set up your environment variables, you need to duplicate the `.env.example` file and rename it to `.env`. You can do this manually or using the following terminal command:
+2. Install the required dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
 
+3. Configure the input settings in `config/configuration.json` as needed.
+
+## Usage
+To generate synthetic accelerometer data and train the model, run the following command:
 ```bash
-cp .env.example .env # Linux, macOS, Git Bash, WSL
-copy .env.example .env # Windows Command Prompt
+python src/main.py --config config/configuration.json --out output_dir_name
 ```
 
-This command creates a copy of `.env.example` and names it `.env`, allowing you to configure your environment variables specific to your setup.
+## Acceptance Criteria
+The generated synthetic data should achieve at least 99.5% classification accuracy when evaluated using a discriminative AI model.
 
+## Artifacts
+- The trained machine learning model will be saved in Keras compatible format (.keras, .h5).
+- Generated synthetic samples will be saved in CSV files organized by activity in the specified output directory.
 
-## Project Organization
-
-```
-├── README.md          <- The top-level README for developers using this project
-├── data
-│   ├── external       <- Data from third party sources
-│   ├── interim        <- Intermediate data that has been transformed
-│   ├── processed      <- The final, canonical data sets for modeling
-│   └── raw            <- The original, immutable data dump
-│
-├── models             <- Trained and serialized models, model predictions, or model summaries
-│
-├── notebooks          <- Jupyter notebooks. Naming convention is a number (for ordering),
-│                         the creator's initials, and a short `-` delimited description, e.g.
-│                         `1.0-jqp-initial-data-exploration`
-│
-├── references         <- Data dictionaries, manuals, and all other explanatory materials
-│
-├── reports            <- Generated analysis as HTML, PDF, LaTeX, etc.
-│   └── figures        <- Generated graphics and figures to be used in reporting
-│
-├── requirements.txt   <- The requirements file for reproducing the analysis environment, e.g.
-│                         generated with `pip freeze > requirements.txt`
-│
-└── src                         <- Source code for this project
-    │
-    ├── __init__.py             <- Makes src a Python module
-    │
-    ├── config.py               <- Store useful variables and configuration
-    │
-    ├── dataset.py              <- Scripts to download or generate data
-    │
-    ├── features.py             <- Code to create features for modeling
-    │
-    │    
-    ├── modeling                
-    │   ├── __init__.py 
-    │   ├── predict.py          <- Code to run model inference with trained models          
-    │   └── train.py            <- Code to train models
-    │
-    ├── plots.py                <- Code to create visualizations 
-    │
-    └── services                <- Service classes to connect with external platforms, tools, or APIs
-        └── __init__.py 
-```
-
---------
+For further details on the output structure, refer to the `output/README.md` file.
