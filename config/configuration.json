@@ -1,9 +1,32 @@
 {
-  "activities": ["walking", "running", "stationary", "cycling", "Nordic walking", "Ascending stairs", "descending stairs", "ironing", "house cleaning", "playing soccer", "rope jumping"],
+  "activities": ["Walking", "Jogging", "Standing"],
   "sample_count_per_activity": 100,
   "sample_duration_in_ms": 1000,
   "acc_mg_range": {
       "min": -4000,
       "max": 4000
+  },
+  "training_watch_accel_dir": "C:\\git\\hackathon2025\\Bitwise\\data\\raw\\wisdm-dataset\\raw\\watch\\accel",
+  "training_phone_accel_dir": "C:\\git\\hackathon2025\\Bitwise\\data\\raw\\wisdm-dataset\\raw\\phone\\accel",
+  "generator_model": "C:\\git\\hackathon2025\\Bitwise\\models\\generator_model.keras",
+  "activity_code_map": {
+    "Walking": "A",
+    "Jogging": "B",
+    "Stairs": "C",
+    "Sitting": "D",
+    "Standing": "E",
+    "Typing": "F",
+    "Brushing Teeth": "G",
+    "Eating Soup": "H",
+    "Eating Chips": "I",
+    "Eating Pasta": "J",
+    "Drinking from Cup": "K",
+    "Eating Sandwich": "L",
+    "Kicking (Soccer Ball)": "M",
+    "Playing Catch w/Tennis Ball": "O",
+    "Dribblinlg (Basketball)": "P",
+    "Writing": "Q",
+    "Clapping": "R",
+    "Folding Clothes": "S"
   }
 }
