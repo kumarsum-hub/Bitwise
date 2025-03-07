@@ -18,15 +18,17 @@ def generate_accelerometer_data(activity, sample_duration, sample_count, acc_mg_
     one_hot_dim = len(code_to_idx)
     one_hot_vec = np.zeros(one_hot_dim, dtype=np.float32)
     one_hot_vec[code_to_idx[w_code]] = 1.0
-    one_hot_vec = one_hot_vec.reshape(1, -1)  # Ensure one_hot_vec is 2D
+
+    # Calculate the number of samples based on the sampling frequency (26 Hz) and sample duration (in milliseconds)
+    sampling_frequency = 26  # 26 Hz
+    num_samples = (sample_duration // 1000) * sampling_frequency
 
     data = []
     for _ in range(sample_count):
-        random_latent = np.random.normal(0, 1, (1, 78))
-        combined_input = np.hstack((random_latent, one_hot_vec))
-        combined_input = combined_input.reshape(1, -1)  # Ensure combined_input is 2D
+        random_latent = np.random.normal(0, 1, (num_samples, 3))
+        combined_input = np.hstack((random_latent, np.tile(one_hot_vec, (num_samples, 1))))
         synthetic_sample = generator.predict(combined_input)
-        time_series = np.linspace(0, sample_duration / 1000, synthetic_sample.shape[0])
+        time_series = np.linspace(0, sample_duration / 1000, num_samples)
         x = synthetic_sample[:, 0]
         y = synthetic_sample[:, 1]
         z = synthetic_sample[:, 2]
